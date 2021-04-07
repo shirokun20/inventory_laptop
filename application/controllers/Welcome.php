@@ -57,6 +57,7 @@ class Welcome extends CI_Controller {
 		}
 
 		if ($error) {
+			$this->session->set_flashdata('email', $email);
 			$this->session->set_flashdata('error', $errorText);
 			redirect(site_url());
 		}

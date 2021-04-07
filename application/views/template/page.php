@@ -17,7 +17,7 @@
     <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="Codedthemes" />
     <!-- Favicon icon -->
-    <link rel="icon" href="<?=base_url()?>assets/icon/logo/printer-dua.gif" type="image/x-icon">
+    <link rel="icon" href="<?=base_url()?>assets/images/logo-2.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!-- waves.css -->
     <link rel="stylesheet" href="<?=base_url()?>assets/pages/waves/css/waves.min.css" type="text/css" media="all">

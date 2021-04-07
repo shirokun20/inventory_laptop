@@ -8,7 +8,7 @@
     <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="Codedthemes" />
     <!-- Favicon icon -->
-    <link rel="icon" href="<?=base_url()?>assets/icon/logo/printer-dua.gif" type="image/x-icon">
+    <link rel="icon" href="<?=base_url()?>assets/images/logo-2.png" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!-- Required Fremwork -->
@@ -95,7 +95,7 @@
             <!-- Authentication card start -->
             <form class="md-float-material form-material" action="<?=base_url('welcome/logCek')?>" method="POST">
               <div class="text-center">
-                <img src="<?=base_url()?>assets/icon/logo/printer-dua.gif" alt="printer-dua.gif" style="width: 150px;">
+                <img src="<?=base_url()?>assets/images/logo-2.png" alt="logo-2.png" style="width: 150px;">
               </div>
               <div class="auth-box card">
                 <div class="card-block">
@@ -140,7 +140,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-12">
-                      <p class="text-center">Dibuat oleh <a href="http://shirokun20.github.io/">Shiro Soft</a>.</p>
+                      <p class="text-center">Dibuat oleh <a href="http://shirokun20.github.io/" class="text-bold">Shiro Soft</a>.</p>
                     </div>
                   </div>
                 </div>
@@ -159,12 +159,16 @@
       var alertData = $('.alert');
       $(() => {
         AlertHide();
+        <?php if (@$this->session->flashdata('email')): ?>
+          $('[name="email"]').val('<?=$this->session->flashdata('email')?>').focus(); 
+        <?php endif ?>
       });
       const AlertHide = () => {
         setTimeout(() => {
           alertData.slideUp('slow');
         }, 5000);
       }
+      
     </script>
   </body>
 </html>

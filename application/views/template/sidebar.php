@@ -89,14 +89,14 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/master_inventory/2')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('admin/master_inventory/')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Lokasi/Rak</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/master_inventory/2')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('admin/master_inventory/')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Brand</span>
                             <span class="pcoded-mcaret"></span>
@@ -114,14 +114,14 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="<?=site_url('admin/transaksi/barang_masuk/')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('data/transaksi/barang_masuk/')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Laptop Masuk</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/transaksi/barang_keluar/')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('data/transaksi/barang_keluar/')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Laptop Keluar</span>
                             <span class="pcoded-mcaret"></span>
@@ -139,21 +139,21 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="<?=site_url('admin/laporan/barang_masuk')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('data/laporan/barang_masuk')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Laptop Masuk</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/laporan/barang_keluar')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('data/laporan/barang_keluar')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Laptop Keluar</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/laporan/stok')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('data/laporan/stok')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Stok Laptop</span>
                             <span class="pcoded-mcaret"></span>
