@@ -75,28 +75,28 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="<?=site_url('admin/master_inventory/')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('admin/master_inventory/master_laptop')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Laptop</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/master_inventory/')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('admin/master_inventory/master_warna')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Warna</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/master_inventory/')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('admin/master_inventory/master_lokasi')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Lokasi/Rak</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?=site_url('admin/master_inventory/')?>" class="waves-effect waves-dark">
+                        <a href="<?=site_url('admin/master_inventory/master_brand')?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Brand</span>
                             <span class="pcoded-mcaret"></span>

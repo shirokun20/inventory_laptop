@@ -83,11 +83,11 @@ class User_model extends CI_Model {
 		$button = '<div class="dropdown-primary dropdown open">';
         $button .= '<button class="btn btn-primary btn-sm dropdown-toggle waves-effect waves-light" type="button" id="dropdown-'.$data->user_id.'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Aksi</button>';
         $button .= '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-'.$data->user_id.'" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">';
-        if ($data->jabatan_id == 2) {
+        // if ($data->jabatan_id == 2) {
     	// 
     	$button .= '<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="detailPengguna('."'".$data->user_id."'".')">Detail</a>';
     	// 
-    	}
+    	// }
         $button .= '<a class="dropdown-item waves-light waves-effect" href="javascript:void(0)" onclick="editClick('."'".$data->user_id."'".')">Edit</a>';
         $button .= '<div class="dropdown-divider"></div>';
         if ($data->status_user_id == 1) {

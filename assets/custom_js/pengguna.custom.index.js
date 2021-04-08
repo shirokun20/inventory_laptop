@@ -106,7 +106,7 @@
     let editClick = async (user_id = '') => {
         try {
             const {
-                jasaprint
+                shiro
             } = await $.ajax({
                 url: `${url_2}/pengguna/getPengguna/`,
                 dataType: "JSON",
@@ -115,8 +115,8 @@
                 },
                 type: "GET",
             });
-            if (jasaprint.status == 'success') {
-                modalEdit(jasaprint.data);
+            if (shiro.status == 'success') {
+                modalEdit(shiro.data);
             }
         } catch (e) {
             console.log(e);
@@ -133,7 +133,7 @@
         // 
         try {
             const {
-                jasaprint
+                shiro
             } = await $.ajax({
                 url: `${url_2}/pengguna/simpan/`,
                 data: formData,
@@ -142,7 +142,7 @@
                 contentType: false,
                 dataType: "JSON",
             });
-            _notificationWreloadData(jasaprint);
+            _notificationWreloadData(shiro);
         } catch (e) {
             console.log(e);
         }
@@ -182,7 +182,7 @@
         try {
             var d = new Date();
             const {
-                jasaprint
+                shiro
             } = await $.ajax({
                 url: `${url_2}/pengguna/hapusData/`,
                 data: {
@@ -192,7 +192,7 @@
                 type: "POST",
                 dataType: "JSON",
             });
-            _notificationWreloadData(jasaprint);
+            _notificationWreloadData(shiro);
             getJumlahPengguna();
         } catch (e) {
             console.log(e);
@@ -220,7 +220,7 @@
         try {
             var d = new Date();
             const {
-                jasaprint
+                shiro
             } = await $.ajax({
                 url: `${url_2}/pengguna/statusChange/`,
                 data: {
@@ -231,7 +231,7 @@
                 type: "POST",
                 dataType: "JSON",
             });
-            _notificationWreloadData(jasaprint);
+            _notificationWreloadData(shiro);
             getJumlahPengguna();
         } catch (e) {
             console.log(e);
@@ -241,16 +241,16 @@
     let getJumlahPengguna = async () => {
         try {
             const {
-                jasaprint
+                shiro
             } = await $.ajax({
                 url: `${url_2}/pengguna/getJumlahPengguna/`,
                 type: "GET",
                 dataType: "JSON",
             });
-            if (jasaprint.status == 'success') {
-                $('#total_pengguna').text(jasaprint.data.total_pengguna);
-                $('#total_admin').text(jasaprint.data.total_admin);
-                $('#total_operator').text(jasaprint.data.total_operator);
+            if (shiro.status == 'success') {
+                $('#total_pengguna').text(shiro.data.total_pengguna);
+                $('#total_admin').text(shiro.data.total_admin);
+                $('#total_operator').text(shiro.data.total_operator);
             }
         } catch (e) {  
             console.log(e);
@@ -260,7 +260,7 @@
     let detailPengguna = async (user_id) => {
         try {
             const {
-                jasaprint
+                shiro
             } = await $.ajax({
                 url: `${url_2}/pengguna/getDetail/`,
                 dataType: "JSON",
@@ -269,8 +269,8 @@
                 },
                 type: "GET",
             });
-            if (jasaprint.status == 'success') {
-                _detailPengguna(jasaprint);
+            if (shiro.status == 'success') {
+                _detailPengguna(shiro);
                 tagHtml = '';
             } else {
                 CustomNotification('Gagal!', 'Pengguna tidak ditemukan!', 'fa fa-times-circle', 'danger');
@@ -289,7 +289,7 @@
                 obj += '<tr>';
                     obj += '<td style="font-weight: bold">#ID</td>';
                     obj += '<td>:</td>';
-                    obj += `<td class="text-right">${data.user_id}</td>`;
+                    obj += `<td class="text-right">USER/${data.user_id}</td>`;
                 obj += '</tr>';
                 obj += '<tr>';
                     obj += '<td style="font-weight: bold">Nama</td>';
@@ -302,27 +302,17 @@
                     obj += `<td class="text-right">${data.user_email}</td>`;
                 obj += '</tr>';
                 obj += '<tr>';
-                    obj += '<td style="font-weight: bold">No Hp.</td>';
-                    obj += '<td>:</td>';
-                    obj += `<td class="text-right">${data.user_phone}</td>`;
-                obj += '</tr>';
-                obj += '<tr>';
                     obj += '<td style="font-weight: bold">Jenis Pengguna</td>';
                     obj += '<td>:</td>';
-                    obj += `<td class="text-right">${data.type_user_nama}</td>`;
+                    obj += `<td class="text-right">${data.jabatan_nama}</td>`;
                 obj += '</tr>';
                 obj += '<tr>';
                     obj += '<td style="font-weight: bold">Status</td>';
                     obj += '<td>:</td>';
                     obj += `<td class="text-right">${data.status_user_nama}</td>`;
                 obj += '</tr>';
-                obj += '<tr>';
-                    obj += '<td style="font-weight: bold">Jumlah Order di aplikasi ini</td>';
-                    obj += '<td>:</td>';
-                    obj += `<td class="text-right">${jumlah_order}</td>`;
-                obj += '</tr>';
             obj += '</table>';
-        tagHtml = modalData('Detail Konsumen', obj);
+        tagHtml = modalData('Detail Pengguna', obj);
         modalSet.html(tagHtml);
         modalVisible();
     }

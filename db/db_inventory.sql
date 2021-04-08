@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 07 Apr 2021 pada 19.55
+-- Waktu pembuatan: 08 Apr 2021 pada 16.31
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.3.26
 
@@ -169,9 +169,17 @@ INSERT INTO `tb_user` (`user_id`, `user_nama`, `user_email`, `user_password`, `s
 --
 
 CREATE TABLE `tb_warna` (
-  `warna_kod` varchar(10) NOT NULL,
+  `warna_kode` varchar(10) NOT NULL,
   `warna_nama` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_warna`
+--
+
+INSERT INTO `tb_warna` (`warna_kode`, `warna_nama`) VALUES
+('MRH01', 'merah'),
+('PTH01', 'putih');
 
 --
 -- Indexes for dumped tables
@@ -229,7 +237,7 @@ ALTER TABLE `tb_user`
 -- Indeks untuk tabel `tb_warna`
 --
 ALTER TABLE `tb_warna`
-  ADD PRIMARY KEY (`warna_kod`);
+  ADD PRIMARY KEY (`warna_kode`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang

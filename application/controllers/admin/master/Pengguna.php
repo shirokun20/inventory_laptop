@@ -70,7 +70,7 @@ class Pengguna extends CI_Controller {
 		} 
 
 		echo json_encode([
-			'jasaprint' => [
+			'shiro' => [
 				'status' => $ada ? 'success' : 'error',
 				'data' => $output,
 			]
@@ -95,7 +95,7 @@ class Pengguna extends CI_Controller {
 			]);
 
 			if ($q->num_rows() > 0) {
-				$jumlah_order = $this->sb->mengambil('tb_transaction', $input)->num_rows();
+				$jumlah_order = 0;
 				$ada = true;
 				$output = $q->row();
 				$output->user_password = '';
@@ -103,7 +103,7 @@ class Pengguna extends CI_Controller {
 		} 
 
 		echo json_encode([
-			'jasaprint' => [
+			'shiro' => [
 				'status' => $ada ? 'success' : 'error',
 				'data' => $output,
 				'jumlah_order' => number_format($jumlah_order),
@@ -128,7 +128,7 @@ class Pengguna extends CI_Controller {
 		}
 
 		echo json_encode([
-			'jasaprint' => [
+			'shiro' => [
 				'status' => $error ? 'error' : 'success',
 				'message' => $message,
 			]
@@ -243,7 +243,7 @@ class Pengguna extends CI_Controller {
 		}
 
 		echo json_encode([
-			'jasaprint' => [
+			'shiro' => [
 				'status' => $error ? 'error' : 'success',
 				'message' => $message,
 			]
@@ -296,7 +296,7 @@ class Pengguna extends CI_Controller {
 		}
 
 		echo json_encode([
-			'jasaprint' => [
+			'shiro' => [
 				'status' => $error ? 'error' : 'success',
 				'message' => $message,
 			]
@@ -313,7 +313,7 @@ class Pengguna extends CI_Controller {
 		];
 
 		echo json_encode([
-			'jasaprint' => [
+			'shiro' => [
 				'status' =>'success',
 				'data' => $data['jumlah'],
 			]
