@@ -1,4 +1,7 @@
 <div>
+	<?php $this->load->view('template/info_message', [
+		'message' => '<h6>Harap mengisi data dengan <b style="color: #ec3305">Benar</b> dikarenakan data master warna <b style="color: #ec3305">menyambung</b> dengan <b style="color: #ec3305">transaksi laptop</b> masuk dan keluar, data lainnya dan tidak adanya fitur <b style="color: #ec3305">hapus</b> data!!</h6>',
+	]); ?>
 	<div class="card">
         <div class="card-header">
         	<div class="row">
