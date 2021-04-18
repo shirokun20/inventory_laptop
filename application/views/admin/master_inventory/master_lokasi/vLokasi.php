@@ -1,6 +1,6 @@
 <div>
 	<?php $this->load->view('template/info_message', [
-		'message' => '<h6>Harap mengisi data dengan <b style="color: #ec3305">Benar</b> dikarenakan data master warna <b style="color: #ec3305">menyambung</b> dengan <b style="color: #ec3305">transaksi laptop</b> masuk dan keluar, data lainnya dan tidak adanya fitur <b style="color: #ec3305">hapus</b> data!!</h6>',
+		'message' => '<h6>Harap mengisi data dengan <b style="color: #ec3305">Benar</b> dikarenakan data master lokasi/rak <b style="color: #ec3305">menyambung</b> dengan <b style="color: #ec3305">transaksi laptop</b> masuk dan keluar, data lainnya dan tidak adanya fitur <b style="color: #ec3305">hapus</b> data!!</h6>',
 	]); ?>
 	<div class="card">
         <div class="card-header">
@@ -10,35 +10,34 @@
         		</div>
         		<div class="col-6">
         			<div class="float-right">
-            			<a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="tambahWarna()"><i class="fa fa-plus text-white"></i> Tambah Warna</a>
+            			<a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="tambahLokasi()"><i class="fa fa-plus text-white"></i> Tambah Lokasi</a>
             			<a href="javascript:void(0)" onclick="reloadData()" class="btn btn-primary btn-sm"><i class="fa fa-refresh text-white"></i> Reload</a>
         			</div>
         		</div>
         	</div>
         </div>
         <div class="card-block">
-        	<form id="formWarna" style="display: none;">
-        		<? $this->load->view('admin/master_inventory/master_warna/vWarnaForm'); ?>
+        	<form id="formLokasi" style="display: none;">
+        		<? $this->load->view('admin/master_inventory/master_lokasi/vLokasiForm'); ?>
         	</form>
             <div class="table-responsive">
                 <table class="table table-hover" width="100%">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th width="30%">Kode Warna</th>
-                            <th width="50%">Warna</th>
+                            <th width="95%">Lokasi/Rak</th>
                             <th width="5%">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody id="tb_warna"></tbody>
+                    <tbody id="tb_lokasi"></tbody>
                 </table>
             </div>
         </div>
-    </div>
+	</div>
 </div>
 <link rel="stylesheet" href="<?=base_url('assets/pages/notification/notification.css')?>">
 <!--  -->
 <script type="text/javascript" src="<?=base_url()?>assets/js/bootstrap-growl.min.js"></script>
 <script src="<?=base_url('assets/custom_js/notification.custom.js')?>"></script>    
 <!--  -->
-<script type="text/javascript" src="<?=base_url('assets/custom_js/warna.custom.index.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/custom_js/lokasi.custom.index.js')?>"></script>

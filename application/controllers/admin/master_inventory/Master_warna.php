@@ -108,7 +108,7 @@ class Master_warna extends CI_Controller {
 		if ($check->num_rows()) {
 			$message = 'Kode Warna sudah digunakan!!';
 		} else {
-			$input['warna_nama'] = ucwords($data['warna_nama']);
+			$input['warna_nama'] = ucwords($input['warna_nama']);
 			$check = $this->wm->insert($input);
 			if ($check['status'] == 'berhasil') {
 				$status = 'berhasil';
