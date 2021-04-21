@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 08 Apr 2021 pada 16.31
+-- Waktu pembuatan: 21 Apr 2021 pada 17.14
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.3.26
 
@@ -42,8 +42,15 @@ CREATE TABLE `tb_barang` (
 
 CREATE TABLE `tb_brand` (
   `brand_id` int(100) NOT NULL,
-  `brand_nama` varchar(100) NOT NULL
+  `brand_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_brand`
+--
+
+INSERT INTO `tb_brand` (`brand_id`, `brand_name`) VALUES
+(1, 'Apple');
 
 -- --------------------------------------------------------
 
@@ -92,6 +99,16 @@ CREATE TABLE `tb_lokasi_barang` (
   `lokasi_barang_id` int(100) NOT NULL,
   `lokasi_barang_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_lokasi_barang`
+--
+
+INSERT INTO `tb_lokasi_barang` (`lokasi_barang_id`, `lokasi_barang_name`) VALUES
+(1, 'Rak A1'),
+(2, 'Rak A2'),
+(6, 'Rak A3'),
+(7, 'Rak A4');
 
 -- --------------------------------------------------------
 
@@ -160,7 +177,8 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`user_id`, `user_nama`, `user_email`, `user_password`, `status_user_id`, `jabatan_id`) VALUES
 (1, 'Admin Gudang Saja', 'admin@gudang.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, 1),
-(2, 'test', 'test@operator.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, 2);
+(2, 'test', 'test@operator.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, 2),
+(3, 'test', 'shiro@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -178,8 +196,9 @@ CREATE TABLE `tb_warna` (
 --
 
 INSERT INTO `tb_warna` (`warna_kode`, `warna_nama`) VALUES
-('MRH01', 'merah'),
-('PTH01', 'putih');
+('MRH01', 'Merah'),
+('MRH02', 'Merah Ajah'),
+('PTH01', 'Putih');
 
 --
 -- Indexes for dumped tables
@@ -208,6 +227,12 @@ ALTER TABLE `tb_detail_barang`
 --
 ALTER TABLE `tb_jabatan`
   ADD PRIMARY KEY (`jabatan_id`);
+
+--
+-- Indeks untuk tabel `tb_lokasi_barang`
+--
+ALTER TABLE `tb_lokasi_barang`
+  ADD PRIMARY KEY (`lokasi_barang_id`);
 
 --
 -- Indeks untuk tabel `tb_status_user`
@@ -247,7 +272,7 @@ ALTER TABLE `tb_warna`
 -- AUTO_INCREMENT untuk tabel `tb_brand`
 --
 ALTER TABLE `tb_brand`
-  MODIFY `brand_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `brand_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_detail_barang`
@@ -260,6 +285,12 @@ ALTER TABLE `tb_detail_barang`
 --
 ALTER TABLE `tb_jabatan`
   MODIFY `jabatan_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_lokasi_barang`
+--
+ALTER TABLE `tb_lokasi_barang`
+  MODIFY `lokasi_barang_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_status_user`
@@ -283,7 +314,7 @@ ALTER TABLE `tb_transaksi_barang_detail`
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

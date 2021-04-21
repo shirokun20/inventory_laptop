@@ -1,26 +1,26 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Master_lokasi extends CI_Controller {
+class Master_brand extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->shiro_lib->cekLogin();
-		$this->load->model('lokasi_model', 'lm');
+		$this->load->model('brand_model', 'bm');
 	}
 
 	public function index()
 	{
 		$data = [
-			'title' => 'Master Lokasi Atau Rak',
-			'subtitle' => 'Master Lokasi Atau Rak',
+			'title' => 'Master Brand Atau Merek',
+			'subtitle' => 'Master Brand Atau Merek',
 		];
 		$data['breadcrumb'] = [
 			[
 				'href' => true,
 				'icon' => 'fa-table',
-				'tujuan' => site_url('admin/master_inventory/master_lokasi'),
+				'tujuan' => site_url('admin/master_inventory/master_brand'),
 				'title' => ''
 			],
 			[
@@ -33,15 +33,15 @@ class Master_lokasi extends CI_Controller {
 				'href' => false,
 				'icon' => '',
 				'tujuan' => '',
-				'title' => 'Lokasi Atau Rak'
+				'title' => 'Brand Atau Merek'
 			]
 		];
-		$this->shiro_lib->admin('master_inventory/master_lokasi/vLokasi', $data);
+		$this->shiro_lib->admin('master_inventory/master_brand/vBrand', $data);
 	}
 
-	public function showDataLokasi() 
+	public function showDataBrand() 
 	{
-		$data = $this->lm->getData();
+		$data = $this->bm->getData();
 		echo json_encode([
 			'shiro' => [
 				'data' => $data->result(),
@@ -54,12 +54,12 @@ class Master_lokasi extends CI_Controller {
 	{
 		$input = $this->input->post();
 		//
-		if ($input['lokasi_barang_name']) {
+		if ($input['brand_name']) {
 			if ($action == 't') {
 				$this->_simpanTambah($input);
 			} else {
 				$this->_simpanEdit([
-					'lokasi_barang_id' => $input['lokasi_barang_id'],
+					'brand_id' => $input['brand_id'],
 				], $input);
 			}
 		} else {
@@ -77,23 +77,23 @@ class Master_lokasi extends CI_Controller {
 		$status = 'gagal';
 		$message = '';
 		//
-		$this->lm->like([
-			'lokasi_barang_name' => $data['lokasi_barang_name'],
+		$this->bm->like([
+			'brand_name' => $data['brand_name'],
 		]);
-		$this->lm->where([
-			'lokasi_barang_id !=' => $data['lokasi_barang_id'],
+		$this->bm->where([
+			'brand_id !=' => $data['brand_id'],
 		]);
-		$check = $this->lm->getData();
+		$check = $this->bm->getData();
 		if ($check->num_rows()) {
-			$message = 'Nama lokasi/rak sudah digunakan!!';
+			$message = 'Nama brand/merek sudah digunakan!!';
 		} else {
-			$data['lokasi_barang_name'] = ucwords($data['lokasi_barang_name']);
-			$check2 = $this->lm->update($where, $data);
+			$data['brand_name'] = ucwords($data['brand_name']);
+			$check2 = $this->bm->update($where, $data);
 			if ($check2['status'] == 'berhasil') {
 				$status = 'berhasil';
-				$message = 'Berhasil mengubah lokasi/rak!';
+				$message = 'Berhasil mengubah brand/merek!';
 			} else {
-				$message = 'Error ketika akan mengubah lokasi/rak!!';
+				$message = 'Error ketika akan mengubah brand/merek!!';
 			}
 		}
 		//
@@ -110,21 +110,21 @@ class Master_lokasi extends CI_Controller {
 		$status = 'gagal';
 		$message = '';
 		//
-		$this->lm->like([
-			'lokasi_barang_name' => $input['lokasi_barang_name']
+		$this->bm->like([
+			'brand_name' => $input['brand_name']
 		]);
-		$check = $this->lm->getData();
+		$check = $this->bm->getData();
 		//
 		if ($check->num_rows()) {
-			$message = 'Nama lokasi/rak sudah digunakan!!';
+			$message = 'Nama brand/merek sudah digunakan!!';
 		} else {
-			$input['lokasi_barang_name'] = ucwords($input['lokasi_barang_name']);
-			$check = $this->lm->insert($input);
+			$input['brand_name'] = ucwords($input['brand_name']);
+			$check = $this->bm->insert($input);
 			if ($check['status'] == 'berhasil') {
 				$status = 'berhasil';
-				$message = 'Berhasil menambah lokasi/rak!';
+				$message = 'Berhasil menambah brand/merek!';
 			} else {
-				$message = 'Error ketika akan menambah lokasi/rak!!';
+				$message = 'Error ketika akan menambah brand/merek!!';
 			}
 		}
 		//
@@ -137,5 +137,5 @@ class Master_lokasi extends CI_Controller {
 	}
 }
 
-/* End of file Master_lokasi.php */
-/* Location: ./application/controllers/admin/master_inventory/Master_lokasi.php */
+/* End of file Master_brand.php */
+/* Location: ./application/controllers/admin/master_inventory/Master_brand.php */
