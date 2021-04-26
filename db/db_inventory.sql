@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 21 Apr 2021 pada 17.14
+-- Waktu pembuatan: 26 Apr 2021 pada 19.04
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.3.26
 
@@ -29,10 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_barang` (
   `barang_kode` varchar(100) NOT NULL,
-  `barang_nama` varchar(100) NOT NULL,
+  `barang_name` varchar(100) NOT NULL,
   `brand_id` int(100) NOT NULL,
   `barang_model` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_barang`
+--
+
+INSERT INTO `tb_barang` (`barang_kode`, `barang_name`, `brand_id`, `barang_model`) VALUES
+('APPLE00001', 'Macbook Pro', 1, 'MD101');
 
 -- --------------------------------------------------------
 
@@ -42,14 +49,14 @@ CREATE TABLE `tb_barang` (
 
 CREATE TABLE `tb_brand` (
   `brand_id` int(100) NOT NULL,
-  `brand_name` varchar(100) NOT NULL
+  `brand_nama` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tb_brand`
 --
 
-INSERT INTO `tb_brand` (`brand_id`, `brand_name`) VALUES
+INSERT INTO `tb_brand` (`brand_id`, `brand_nama`) VALUES
 (1, 'Apple');
 
 -- --------------------------------------------------------
@@ -61,14 +68,20 @@ INSERT INTO `tb_brand` (`brand_id`, `brand_name`) VALUES
 CREATE TABLE `tb_detail_barang` (
   `detail_barang_id` int(100) NOT NULL,
   `barang_kode` varchar(100) NOT NULL,
-  `detail_barang_prosessor` varchar(100) NOT NULL,
+  `detail_barang_processor` varchar(100) NOT NULL,
   `detail_barang_ram` int(4) NOT NULL,
   `detail_barang_storage` varchar(100) NOT NULL,
   `warna_kode` varchar(10) NOT NULL,
-  `detail_barang_keterangan` int(100) NOT NULL,
-  `lokasi_barang_id` int(100) NOT NULL,
-  `detail_barang_stok` int(100) NOT NULL
+  `detail_barang_keterangan` text NOT NULL,
+  `lokasi_barang_id` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_detail_barang`
+--
+
+INSERT INTO `tb_detail_barang` (`detail_barang_id`, `barang_kode`, `detail_barang_processor`, `detail_barang_ram`, `detail_barang_storage`, `warna_kode`, `detail_barang_keterangan`, `lokasi_barang_id`) VALUES
+(1, 'APPLE00001', 'Intel Core i5', 8, '500 SSD', 'SVR01', 'Ini macbook versi tahun 2012', 1);
 
 -- --------------------------------------------------------
 
@@ -97,14 +110,14 @@ INSERT INTO `tb_jabatan` (`jabatan_id`, `jabatan_nama`) VALUES
 
 CREATE TABLE `tb_lokasi_barang` (
   `lokasi_barang_id` int(100) NOT NULL,
-  `lokasi_barang_name` varchar(100) NOT NULL
+  `lokasi_barang_nama` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tb_lokasi_barang`
 --
 
-INSERT INTO `tb_lokasi_barang` (`lokasi_barang_id`, `lokasi_barang_name`) VALUES
+INSERT INTO `tb_lokasi_barang` (`lokasi_barang_id`, `lokasi_barang_nama`) VALUES
 (1, 'Rak A1'),
 (2, 'Rak A2'),
 (6, 'Rak A3'),
@@ -132,14 +145,34 @@ INSERT INTO `tb_status_user` (`status_user_id`, `status_user_nama`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_stok`
+--
+
+CREATE TABLE `tb_stok` (
+  `stok_id` int(100) NOT NULL,
+  `barang_kode` varchar(100) NOT NULL,
+  `detail_barang_id` int(100) NOT NULL,
+  `stok_qty` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_stok`
+--
+
+INSERT INTO `tb_stok` (`stok_id`, `barang_kode`, `detail_barang_id`, `stok_qty`) VALUES
+(1, 'APPLE00001', 1, 11);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_transaksi_barang`
 --
 
 CREATE TABLE `tb_transaksi_barang` (
   `transaksi_barang_id` int(100) NOT NULL,
   `transaksi_barang_no_faktur` varchar(100) NOT NULL,
-  `transaksi_barang_tanggal` varchar(100) NOT NULL,
-  `user_id` varchar(100) NOT NULL,
+  `transaksi_barang_tanggal` datetime NOT NULL,
+  `user_id` int(100) NOT NULL,
   `transaksi_barang_jenis` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -151,6 +184,7 @@ CREATE TABLE `tb_transaksi_barang` (
 
 CREATE TABLE `tb_transaksi_barang_detail` (
   `transaksi_barang_detail_id` int(100) NOT NULL,
+  `transaksi_barang_id` int(100) NOT NULL,
   `barang_kode` varchar(100) NOT NULL,
   `detail_barang_id` int(100) NOT NULL,
   `transaksi_barang_detail_jml` int(100) NOT NULL
@@ -198,7 +232,8 @@ CREATE TABLE `tb_warna` (
 INSERT INTO `tb_warna` (`warna_kode`, `warna_nama`) VALUES
 ('MRH01', 'Merah'),
 ('MRH02', 'Merah Ajah'),
-('PTH01', 'Putih');
+('PTH01', 'Putih'),
+('SVR01', 'Silver');
 
 --
 -- Indexes for dumped tables
@@ -241,6 +276,12 @@ ALTER TABLE `tb_status_user`
   ADD PRIMARY KEY (`status_user_id`);
 
 --
+-- Indeks untuk tabel `tb_stok`
+--
+ALTER TABLE `tb_stok`
+  ADD PRIMARY KEY (`stok_id`);
+
+--
 -- Indeks untuk tabel `tb_transaksi_barang`
 --
 ALTER TABLE `tb_transaksi_barang`
@@ -278,7 +319,7 @@ ALTER TABLE `tb_brand`
 -- AUTO_INCREMENT untuk tabel `tb_detail_barang`
 --
 ALTER TABLE `tb_detail_barang`
-  MODIFY `detail_barang_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `detail_barang_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jabatan`
@@ -297,6 +338,12 @@ ALTER TABLE `tb_lokasi_barang`
 --
 ALTER TABLE `tb_status_user`
   MODIFY `status_user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_stok`
+--
+ALTER TABLE `tb_stok`
+  MODIFY `stok_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi_barang`

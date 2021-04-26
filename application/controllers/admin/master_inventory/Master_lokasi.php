@@ -54,7 +54,7 @@ class Master_lokasi extends CI_Controller {
 	{
 		$input = $this->input->post();
 		//
-		if ($input['lokasi_barang_name']) {
+		if ($input['lokasi_barang_nama']) {
 			if ($action == 't') {
 				$this->_simpanTambah($input);
 			} else {
@@ -78,7 +78,7 @@ class Master_lokasi extends CI_Controller {
 		$message = '';
 		//
 		$this->lm->like([
-			'lokasi_barang_name' => $data['lokasi_barang_name'],
+			'lokasi_barang_nama' => $data['lokasi_barang_nama'],
 		]);
 		$this->lm->where([
 			'lokasi_barang_id !=' => $data['lokasi_barang_id'],
@@ -87,7 +87,7 @@ class Master_lokasi extends CI_Controller {
 		if ($check->num_rows()) {
 			$message = 'Nama lokasi/rak sudah digunakan!!';
 		} else {
-			$data['lokasi_barang_name'] = ucwords($data['lokasi_barang_name']);
+			$data['lokasi_barang_nama'] = ucwords($data['lokasi_barang_nama']);
 			$check2 = $this->lm->update($where, $data);
 			if ($check2['status'] == 'berhasil') {
 				$status = 'berhasil';
@@ -111,14 +111,14 @@ class Master_lokasi extends CI_Controller {
 		$message = '';
 		//
 		$this->lm->like([
-			'lokasi_barang_name' => $input['lokasi_barang_name']
+			'lokasi_barang_nama' => $input['lokasi_barang_nama']
 		]);
 		$check = $this->lm->getData();
 		//
 		if ($check->num_rows()) {
 			$message = 'Nama lokasi/rak sudah digunakan!!';
 		} else {
-			$input['lokasi_barang_name'] = ucwords($input['lokasi_barang_name']);
+			$input['lokasi_barang_nama'] = ucwords($input['lokasi_barang_nama']);
 			$check = $this->lm->insert($input);
 			if ($check['status'] == 'berhasil') {
 				$status = 'berhasil';

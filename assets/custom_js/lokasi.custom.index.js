@@ -10,7 +10,7 @@ var tagId = {
 	tb_lokasi: $('#tb_lokasi'),
 	formLokasi: $('#formLokasi'),
 	textHeader: $('#textHeader'),
-	lbn: $('[name="lokasi_barang_name"]'),
+	lbn: $('[name="lokasi_barang_nama"]'),
 }
 //
 $(() => {
@@ -37,7 +37,7 @@ var _simpanData = () => {
     	url: `${url}/${action == 'tambah' ? 'simpanData/t' : 'simpanData/e'}`,
     	data: {
     		lokasi_barang_id: lbi,
-    		lokasi_barang_name: tagId.lbn.val(),
+    		lokasi_barang_nama: tagId.lbn.val(),
     	},
     	type: 'POST',
     	dataType: 'JSON',
@@ -91,7 +91,7 @@ var setTbLokasi = () => {
 		dataLokasi.map((e, index) => {
 			obj += '<tr>';
 			obj += `<td>${index + 1}</td>`;
-			obj += `<td>${e.lokasi_barang_name}</td>`;
+			obj += `<td>${e.lokasi_barang_nama}</td>`;
 			obj += `<td>${_btn(e, index)}</td>`;
 			obj += '</tr>';
 		});
@@ -156,7 +156,7 @@ var editClick = value => {
 		action = 'edit';
 		lbi = mengambilData[0].lokasi_barang_id;
 		tagId.lbn
-		.val(mengambilData[0].lokasi_barang_name);
+		.val(mengambilData[0].lokasi_barang_nama);
 		tagId.formLokasi.slideDown('slow');
 		tagId.textHeader.text('Edit Lokasi/Rak');
 	} else {

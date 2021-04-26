@@ -10,7 +10,7 @@ var tagId = {
     tb_brand: $('#tb_brand'),
     formBrand: $('#formBrand'),
     textHeader: $('#textHeader'),
-    bn: $('[name="brand_name"]'),
+    bn: $('[name="brand_nama"]'),
 }
 //
 $(() => {
@@ -37,7 +37,7 @@ var _simpanData = () => {
         url: `${url}/${action == 'tambah' ? 'simpanData/t' : 'simpanData/e'}`,
         data: {
             brand_id: bi,
-            brand_name: tagId.bn.val(),
+            brand_nama: tagId.bn.val(),
         },
         type: 'POST',
         dataType: 'JSON',
@@ -91,7 +91,7 @@ var setTbBrand = () => {
         dataBrand.map((e, index) => {
             obj += '<tr>';
             obj += `<td>${index + 1}</td>`;
-            obj += `<td>${e.brand_name}</td>`;
+            obj += `<td>${e.brand_nama}</td>`;
             obj += `<td>${_btn(e, index)}</td>`;
             obj += '</tr>';
         });
@@ -156,7 +156,7 @@ var editClick = value => {
         action = 'edit';
         bi = mengambilData[0].brand_id;
         tagId.bn
-        .val(mengambilData[0].brand_name);
+        .val(mengambilData[0].brand_nama);
         tagId.formBrand.slideDown('slow');
         tagId.textHeader.text('Edit Brand/Merek');
     } else {

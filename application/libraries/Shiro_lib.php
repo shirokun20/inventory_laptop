@@ -33,8 +33,6 @@ class Shiro_lib
 
     public function cekLogin() 
     {
-        if (empty($this->ci->session->admin)) {
-            redirect(site_url());
-        }
+        if (!@$this->ci->session->admin) redirect(site_url());
     }
 }

@@ -54,7 +54,7 @@ class Master_brand extends CI_Controller {
 	{
 		$input = $this->input->post();
 		//
-		if ($input['brand_name']) {
+		if ($input['brand_nama']) {
 			if ($action == 't') {
 				$this->_simpanTambah($input);
 			} else {
@@ -78,7 +78,7 @@ class Master_brand extends CI_Controller {
 		$message = '';
 		//
 		$this->bm->like([
-			'brand_name' => $data['brand_name'],
+			'brand_nama' => $data['brand_nama'],
 		]);
 		$this->bm->where([
 			'brand_id !=' => $data['brand_id'],
@@ -87,7 +87,7 @@ class Master_brand extends CI_Controller {
 		if ($check->num_rows()) {
 			$message = 'Nama brand/merek sudah digunakan!!';
 		} else {
-			$data['brand_name'] = ucwords($data['brand_name']);
+			$data['brand_nama'] = ucwords($data['brand_nama']);
 			$check2 = $this->bm->update($where, $data);
 			if ($check2['status'] == 'berhasil') {
 				$status = 'berhasil';
@@ -111,14 +111,14 @@ class Master_brand extends CI_Controller {
 		$message = '';
 		//
 		$this->bm->like([
-			'brand_name' => $input['brand_name']
+			'brand_nama' => $input['brand_nama']
 		]);
 		$check = $this->bm->getData();
 		//
 		if ($check->num_rows()) {
 			$message = 'Nama brand/merek sudah digunakan!!';
 		} else {
-			$input['brand_name'] = ucwords($input['brand_name']);
+			$input['brand_nama'] = ucwords($input['brand_nama']);
 			$check = $this->bm->insert($input);
 			if ($check['status'] == 'berhasil') {
 				$status = 'berhasil';

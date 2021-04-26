@@ -108,7 +108,7 @@
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu ">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-printer"></i><b>T</b></span>
+                    <span class="pcoded-micon"><i class="ti-exchange-vertical"></i><b>T</b></span>
                     <span class="pcoded-mtext">Transaksi</span>
                     <span class="pcoded-mcaret"></span>
                 </a>

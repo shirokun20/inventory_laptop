@@ -3,7 +3,7 @@
         <div class="col-8">
         	<div class="form-group">
         		<label>Lokasi/Rak</label>
-        		<input type="text" class="form-control" placeholder="Masukan Lokasi/Rak" name="lokasi_barang_name" required>
+        		<input type="text" class="form-control" placeholder="Masukan Lokasi/Rak" name="lokasi_barang_nama" required>
         	</div>
         </div>
         <div class="col-2">

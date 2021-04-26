@@ -3,7 +3,7 @@
         <div class="col-8">
         	<div class="form-group">
         		<label>Brand/Merek</label>
-        		<input type="text" class="form-control" placeholder="Masukan Brand/Merek" name="brand_name" required>
+        		<input type="text" class="form-control" placeholder="Masukan Brand/Merek" name="brand_nama" required>
         	</div>
         </div>
         <div class="col-2">
