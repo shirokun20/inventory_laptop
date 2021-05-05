@@ -7,13 +7,10 @@ Untuk login: <br>
 email: admin@gudang.com <br>
 password: 123
 
-# Tampilan dari aplikasi (coming soon)
+# Tampilan dari aplikasi
 ####
 Login
-------------
 <img src="https://github.com/shirokun20/inventory_laptop_ci/blob/master/screenshot/gambar-01.png"> 
 <br>
-####
-Dashboard
--------------
+#### Dashboard
 <img src="https://github.com/shirokun20/inventory_laptop_ci/blob/master/screenshot/gambar-02.png"> 
