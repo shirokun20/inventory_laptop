@@ -6,6 +6,7 @@ class Barang_masuk extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('transaksi_model', 'tm');
 	}
 
 	public function index( $offset = 0 )
@@ -37,6 +38,12 @@ class Barang_masuk extends CI_Controller {
 		];
 
 		$this->shiro_lib->admin('transaksi/laptop_masuk/vLaptopMasuk', $data);
+	}
+
+	public function showDataTransaksi()
+	{
+		$data = $this->tm->getDataTables();
+		echo json_encode($data);
 	}
 }
 

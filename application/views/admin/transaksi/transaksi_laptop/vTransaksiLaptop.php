@@ -84,7 +84,7 @@
 		<div class="col-lg-3" id="cSimpan" style="display: none;">
 			<div class="card">
 				<div class="card-block">
-					<button class="btn btn-primary btn-block btn-sm"><i class="fa fa-save"></i> Simpan</button>
+					<button class="btn btn-primary btn-block btn-sm" onclick="simpanKeDb()"><i class="fa fa-save"></i> Simpan</button>
 				</div>
 			</div>
 		</div>
@@ -147,6 +147,7 @@
 	var setAwal = () => {
 		tag.formDt[0].reset();
 		setTabelTD();
+		mengambilDataBarang();
 		if (dataTabelDetail.length > 0) {
 			tag.cSimpan.slideDown('slow');
 		} else {
@@ -172,6 +173,7 @@
 	}
 	//
 	var mengambilDataBarang = () => {
+		dataBarang = [];
 		var res = $.ajax({
 			url: `${url_2}/transaksi_laptop/mengambilBarang`,
 			type: 'GET',
@@ -326,5 +328,37 @@
 				CustomNotification('Berhasil!', 'menghapus data detail transaksi!!', 'fa fa-check', 'success');
 			}, 2000);
 		} 
+	}
+
+	var simpanKeDb = () => {
+        CustomNotification('Tunggu Sebentar!', 'sedang proses menyimpan data ke database!!', 'fa fa-exchange', 'inverse');
+        setTimeout((e) => _simpanKeDb(), 2000);
+	}
+
+	var _simpanKeDb = () => {
+		var response = $.ajax({
+			url: `${url_2}/transaksi_laptop/simpanTransaksi`,
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				transaksi_barang_no_faktur: tag.tbnf.val(),
+				transaksi_barang_tanggal: tag.tbt.val(),
+				jenis_transaksi,
+				dataTabelDetail,
+			}
+		});
+
+		response.then(({ shiro }) => {
+			if (shiro.status == 'berhasil') {
+				CustomNotification('Berhasil!', shiro.message, 'fa fa-check', 'success');
+			} else {
+				CustomNotification('Gagal!', shiro.message, 'fa fa-times-circle', 'danger');
+			}
+			
+
+			if (shiro.status == 'berhasil') setTimeout((e) => {
+				window.location.replace(url_2 + (jenis_transaksi == 'm' ? '/barang_masuk/' : '/barang_keluar/'));
+			}, 3000);
+		})
 	}
 </script>

@@ -111,6 +111,51 @@ class Transaksi_laptop extends CI_Controller {
 			]
  		]);
 	}
+
+
+	public function simpanTransaksi()
+	{
+		$input = $this->input->post();
+		$status = 'gagal';
+		$message = 'Proses transaksi mengalami error!!';
+		//
+		$dataTransaksi = [
+			'transaksi_barang_no_faktur' => $input['transaksi_barang_no_faktur'],
+			'transaksi_barang_tanggal' => $input['transaksi_barang_tanggal'] . date(' H:i:s'),
+			'user_id' => $this->session->admin->user_id,
+			'transaksi_barang_jenis' => $input['jenis_transaksi'] == 'm' ? 0 : 1,
+		];
+		//
+		$response_transaksi = $this->tm->simpanKeTransaksi($dataTransaksi);
+		//
+		if ($response_transaksi['status'] == 'berhasil') {
+			$data = [];
+			foreach ($input['dataTabelDetail'] as $key) {
+				$r = [];
+				$r['transaksi_barang_id'] = $response_transaksi['insert_id'];
+				$r['barang_kode'] = $key['barang_kode'];
+				$r['detail_barang_id'] = $key['detail_barang_id'];
+				$r['transaksi_barang_detail_jml'] = $key['transaksi_barang_detail_jml'];
+				$data[] = $r;
+				$dataTransaksi['transaksi_barang_jenis'] == 0 ? 
+				$this->tm->menambahStok($r['detail_barang_id'], $r['barang_kode'], $r['transaksi_barang_detail_jml']) 
+				: 
+				$this->tm->mengurangiStok($r['detail_barang_id'], $r['barang_kode'], $r['transaksi_barang_detail_jml']);
+			}
+			if (count($data) > 0) {
+				$status = 'berhasil';
+				$message = 'Berhasil melakukan transaksi!!!';
+				$this->tm->simpanKeDt($data);
+			} 
+		}
+		//
+		echo json_encode([
+			'shiro' => [
+				'status' => $status,
+				'message' => $message,	
+			]
+ 		]);
+	}
 }
 
 /* End of file Transaksi_laptop.php */
