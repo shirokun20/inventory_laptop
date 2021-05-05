@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 26 Apr 2021 pada 19.04
+-- Waktu pembuatan: 05 Bulan Mei 2021 pada 06.58
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.3.26
 
@@ -160,7 +160,7 @@ CREATE TABLE `tb_stok` (
 --
 
 INSERT INTO `tb_stok` (`stok_id`, `barang_kode`, `detail_barang_id`, `stok_qty`) VALUES
-(1, 'APPLE00001', 1, 11);
+(1, 'APPLE00001', 1, 24);
 
 -- --------------------------------------------------------
 
@@ -176,6 +176,14 @@ CREATE TABLE `tb_transaksi_barang` (
   `transaksi_barang_jenis` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tb_transaksi_barang`
+--
+
+INSERT INTO `tb_transaksi_barang` (`transaksi_barang_id`, `transaksi_barang_no_faktur`, `transaksi_barang_tanggal`, `user_id`, `transaksi_barang_jenis`) VALUES
+(1, 'M2021050100001', '2021-05-01 00:59:51', 1, 0),
+(2, 'M2021050100002', '2021-05-01 01:08:20', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -189,6 +197,14 @@ CREATE TABLE `tb_transaksi_barang_detail` (
   `detail_barang_id` int(100) NOT NULL,
   `transaksi_barang_detail_jml` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_transaksi_barang_detail`
+--
+
+INSERT INTO `tb_transaksi_barang_detail` (`transaksi_barang_detail_id`, `transaksi_barang_id`, `barang_kode`, `detail_barang_id`, `transaksi_barang_detail_jml`) VALUES
+(1, 1, 'APPLE00001', 1, 12),
+(2, 2, 'APPLE00001', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -349,13 +365,13 @@ ALTER TABLE `tb_stok`
 -- AUTO_INCREMENT untuk tabel `tb_transaksi_barang`
 --
 ALTER TABLE `tb_transaksi_barang`
-  MODIFY `transaksi_barang_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaksi_barang_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi_barang_detail`
 --
 ALTER TABLE `tb_transaksi_barang_detail`
-  MODIFY `transaksi_barang_detail_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaksi_barang_detail_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
