@@ -7,4 +7,4 @@ Untuk login: <br>
 email: admin@gudang.com <br>
 password: 123
 
-# Tampilan dasar (coming soon)
+# Tampilan dari aplikasi (coming soon)
