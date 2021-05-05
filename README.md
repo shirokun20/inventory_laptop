@@ -7,6 +7,9 @@ Untuk login: <br>
 email: admin@gudang.com <br>
 password: 123
 
+### Catatan
+Jangan lupa import database dengan nama <b>db_inventory</b> ke phpmyadmin <br>
+
 # Tampilan dari aplikasi
 ####
 Login
